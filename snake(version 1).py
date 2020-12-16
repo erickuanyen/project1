@@ -1,7 +1,7 @@
 import pygame
 import time
 import random
- 
+
 pygame.init()
 
 # some useful color
@@ -31,7 +31,7 @@ basic_font = font(20)
 
 # 蛇
 snake_block = 16
-snake_speed = 40
+snake_speed = 20
 def draw_snake(snake_body, snake_block):
     for i in snake_body:
         pygame.draw.rect(dis, blue, [i[0], i[1], snake_block, snake_block])
@@ -67,7 +67,7 @@ def gameLoop():
     
     # 遊戲中
     while not game_over:
-        # 幀率
+        #控制遊戲速度
         clock.tick(snake_speed)
         
         # 輸遊戲後 SPACE則繼續 ESC則關閉遊戲
@@ -127,7 +127,7 @@ def gameLoop():
             snake_body.append([x_head, y_head])
         if len(snake_body) > snake_len:
             del snake_body[0]
-          
+        
         # 蛇撞身體
         for j in snake_body[:-1]:
             if j == [x_head, y_head]:
@@ -145,9 +145,6 @@ def gameLoop():
                 x_apple = int(random.randint(0, dis_width) / snake_block) * snake_block
                 y_apple = int(random.randint(0, dis_height) / snake_block) * snake_block
             snake_len += 1
-
-        #控制遊戲速度
-        clock.tick(snake_speed)
  
     pygame.quit()
     quit()
