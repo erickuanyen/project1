@@ -113,7 +113,7 @@ def gameLoop():
         x_head, y_head = snake_body[-1][0], snake_body[-1][1]
         
         # 蛇撞牆
-        if not (0 <= x_head <= dis_width and 0 <= y_head <= dis_height):
+        if not (0 <= x_head <= dis_width - snake_block * 0.5 and 0 <= y_head <= dis_height - snake_block * 0.5):
             game_close = True
             
         # 背景 & 蘋果
