@@ -31,7 +31,7 @@ basic_font = font(20)
 
 # 蛇
 snake_block = 16
-snake_speed = 30
+snake_speed = 40
 def draw_snake(snake_body, snake_block):
     for i in snake_body:
         pygame.draw.rect(dis, blue, [i[0], i[1], snake_block, snake_block])
