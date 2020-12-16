@@ -110,7 +110,8 @@ def gameLoop():
                     last = "DOWN"
         
         # 紀錄蛇頭位置
-        x_head, y_head = snake_body[-1][0], snake_body[-1][1]        
+        x_head, y_head = snake_body[-1][0], snake_body[-1][1]
+        
         # 蛇撞牆
         if not (0 <= x_head <= dis_width and 0 <= y_head <= dis_height):
             game_close = True
