@@ -126,8 +126,7 @@ def gameLoop():
             snake_body.append([x_head, y_head])
         if len(snake_body) > snake_len:
             del snake_body[0]
-        print(snake_body)
-        
+          
         # 蛇撞身體
         for j in snake_body[:-1]:
             if j == [x_head, y_head]:
