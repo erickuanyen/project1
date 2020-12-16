@@ -118,7 +118,7 @@ def gameLoop():
             
         # 背景 & 蘋果
         dis.fill(black)
-        pygame.draw.rect(dis, red, [x_apple, y_apple, snake_block, snake_block])
+        pygame.draw.rect(dis, red, [x_apple, y_apple, int(snake_block / 2), int(snake_block / 2)])
             
         # 記錄蛇 長度 & 位置
         if not x_change == y_change == 0:
