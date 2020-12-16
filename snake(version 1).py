@@ -57,7 +57,7 @@ def gameLoop():
     snake_len = 3
     snake_body = []
     for i in range(snake_len):
-        snake_body.append([dis_width / 2 + i * snake_block, dis_height / 2])
+        snake_body.append([0 + i * snake_block, dis_height / 2])
     x_change = 0
     y_change = 0
     
