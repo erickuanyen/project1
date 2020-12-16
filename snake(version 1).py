@@ -31,7 +31,7 @@ basic_font = font(20)
 
 # 蛇
 snake_block = 16
-snake_speed = 16
+snake_speed = 30
 def draw_snake(snake_body, snake_block):
     for i in snake_body:
         pygame.draw.rect(dis, blue, [i[0], i[1], snake_block, snake_block])
@@ -68,7 +68,7 @@ def gameLoop():
     # 遊戲中
     while not game_over:
         # 幀率
-        clock.tick(50)
+        clock.tick(snake_speed)
         
         # 輸遊戲後 SPACE則繼續 ESC則關閉遊戲
         while game_close == True:
@@ -147,7 +147,7 @@ def gameLoop():
             snake_len += 1
 
         #控制遊戲速度
-        clock.tick(20)
+        clock.tick(snake_speed)
  
     pygame.quit()
     quit()
