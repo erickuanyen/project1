@@ -72,7 +72,7 @@ def gameLoop():
     game_close = False
     game_start = False
     last = "RIGHT"
-    
+    backgroungImg = pygame.image.load('grid.png')
     # 蛇起始
     snake_len = 3
     snake_body = []
@@ -98,9 +98,10 @@ def gameLoop():
     y_bomb = int(random.randint(0, dis_height - snake_block) / snake_block) * snake_block
     time = 60
     countdown = snake_speed* time
-    movecycle, lurkcycle = 0, 0
+    movecycle, lurkcycle, bananacycle = 0, 0, 0
     item_move = 5
     bomb_lurk = 10
+    banana_lurk = 1
     # 遊戲中
     while not game_over:
         if countdown==0:
@@ -127,9 +128,9 @@ def gameLoop():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 game_over = True
-                
-            # 按按鍵時
-            if event.type == pygame.KEYDOWN:
+
+        # 按按鍵時
+            if event.type == pygame.KEYDOWN and event.type != pygame.K_SPACE:
                 game_start = True
                 if event.key == pygame.K_LEFT and last != "RIGHT":
                     x_change = -snake_block
@@ -155,7 +156,7 @@ def gameLoop():
             game_close = True
             
         # 背景 & 道具
-        dis.fill(black)
+        dis.blit(backgroungImg, (0,0))
         dis.blit(appleImg, (x_apple, y_apple))
         dis.blit(bombImg, (x_bomb, y_bomb))
         dis.blit(bananaImg, (x_banana, y_banana))
@@ -190,10 +191,7 @@ def gameLoop():
             while [x_banana, y_banana] in snake_body:
                 x_banana = int(random.randint(0, dis_width) / snake_block) * snake_block
                 y_banana = int(random.randint(0, dis_height) / snake_block) * snake_block
-            if(snake_len<=6):
-                snake_len=3
-            else:
-                snake_len=snake_len//2
+            snake_len += 5
         # 吃到橘子
         if x_head == x_orange and y_head == y_orange:
             while [x_orange, y_orange] in snake_body:
@@ -211,6 +209,13 @@ def gameLoop():
                 movecycle=0
             else:
                 movecycle+=1
+            if(bananacycle%(banana_lurk*snake_speed) == 0 and bananacycle!=0):
+                x_banana = int(random.randint(0, dis_width) / snake_block) * snake_block
+                y_banana = int(random.randint(0, dis_height) / snake_block) * snake_block
+                bananacycle=0
+            else:
+                bananacycle+=1
+            
             if(lurkcycle%(bomb_lurk*snake_speed) == 0 and lurkcycle!=0):
                 x_bomb = int(random.randint(0, dis_width) / snake_block) * snake_block
                 y_bomb = int(random.randint(0, dis_height) / snake_block) * snake_block
