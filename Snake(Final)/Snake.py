@@ -885,9 +885,9 @@ def AImode():
                 AI_walltouch = 1
                 game_close = True
 
-             # AI遇 bump & wall & 身體時 (95%機率轉向)
+             # AI遇 bump & wall & 身體時 (98%機率轉向)
             for i in range(Qe):
-                if (x2_head + x2_change == x_bomb[i] and y2_head + y2_change == y_bomb[i]) and random.random() <= 0.95:
+                if (x2_head + x2_change == x_bomb[i] and y2_head + y2_change == y_bomb[i]) and random.random() <= 0.98:
                     if last_AI1 == last_AI2:
                         direction = last_AI1
                     else:
@@ -910,7 +910,7 @@ def AImode():
                             x2_change = snake_block
                             y2_change = 0
                             last_AI1 = "RIGHT"
-            if not (0 <= x2_head + x2_change <= dis_width and 0 <= y2_head + y2_change <= dis_width) and random.random() <= 0.95:
+            if not (0 <= x2_head + x2_change <= dis_width and 0 <= y2_head + y2_change <= dis_width) and random.random() <= 0.98:
                 if last_AI1 in ("RIGHT", "LEFT"):
                     if y_apple[target] < y2_head:
                         x2_change = 0
